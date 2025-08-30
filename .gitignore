@@ -1,0 +1,23 @@
+# Compiled C++ files
+*.out
+*.o
+*.exe
+cpp_runner
+
+# Compiled Java files
+*.class
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.class
+*.o
+*.out
+*.exe
+cpp_runner
+.vscode/
+.DS_Store
+Thumbs.db
