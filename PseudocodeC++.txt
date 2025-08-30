@@ -1,0 +1,8 @@
+1. Include necessary headers.
+2. Create two functions: countUp() and countDown().
+3. In main():
+    a. Start thread1 with countUp().
+    b. Wait for thread1 to finish.
+    c. Start thread2 with countDown().
+    d. Wait for thread2 to finish.
+4. Return from main.
