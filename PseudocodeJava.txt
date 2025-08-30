@@ -1,0 +1,21 @@
+START
+
+DEFINE a class ConcurrencyDemo with main method
+
+CREATE first thread (upThread) that:
+    FOR i from 0 to 20:
+        PRINT "Counting Up: " + i
+
+CREATE second thread (downThread) that:
+    FOR i from 20 down to 0:
+        PRINT "Counting Down: " + i
+
+START upThread
+WAIT for upThread to finish (join)
+
+START downThread
+WAIT for downThread to finish (join)
+
+PRINT "Both threads have finished."
+
+END
