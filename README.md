@@ -11,8 +11,6 @@ This project demonstrates fundamental concurrency concepts using both **C++** an
 - Includes pseudocode for both implementations
 - Shows safe thread synchronization behavior
 
----
-
 ## Concepts Demonstrated
 
 - Concurrency
@@ -35,8 +33,6 @@ This project demonstrates fundamental concurrency concepts using both **C++** an
 - GitHub
 - Terminal / Command Line
 
----
-
 ## Project Structure
 
 ```text
@@ -49,8 +45,6 @@ ConcurrencyConcepts/
 ├── README.md
 └── .gitignore
 ```
-
----
 
 # Prerequisites
 
@@ -122,7 +116,7 @@ thread1.join();
 - How mutexes help prevent unsafe shared access in C++
 - How concurrency concepts apply across multiple programming languages
 
-Future Improvements
+## Future Improvements
 
 - Add parallel thread execution examples
 - Demonstrate race conditions and deadlocks
@@ -138,25 +132,17 @@ Future Improvements
 
 ![Java Output](Screenshots/JavaOutput.png)
 
----
-
 ### C++ Program Output
 
 ![C++ Output](Screenshots/C++Output.png)
-
----
 
 ### Java Pseudocode
 
 ![Java Pseudocode](Screenshots/PseudocodeJava.png)
 
----
-
 ### C++ Pseudocode
 
 ![C++ Pseudocode](Screenshots/PseudocodeC++.png)
-
----
 
 ### GitHub Repository
 
