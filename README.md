@@ -2,8 +2,6 @@
 
 This project demonstrates fundamental concurrency concepts using both **C++** and **Java**. The programs create and manage multiple threads that count upward and downward while coordinating execution using thread synchronization techniques such as `join()`. The project highlights how concurrency is implemented differently in each language while achieving the same behavior.
 
----
-
 ## Features
 
 - Multithreading examples in both Java and C++
