@@ -46,13 +46,13 @@ ConcurrencyConcepts/
 └── .gitignore
 ```
 
-# Prerequisites
+### Prerequisites
 
 - Java JDK installed
 - javac and java configured in terminal
 - C++
 
-# Steps
+### Steps
 
 ## How to Run Java App
 
