@@ -13,11 +13,3 @@ cpp_runner
 # OS files
 .DS_Store
 Thumbs.db
-*.class
-*.o
-*.out
-*.exe
-cpp_runner
-.vscode/
-.DS_Store
-Thumbs.db
