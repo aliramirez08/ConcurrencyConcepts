@@ -1,34 +1,33 @@
 #include <iostream>
-#include <thread>
 #include <mutex>
-#include <string>
+#include <thread>
 
 std::mutex outputMutex;
 
 void countUp() {
     for (int i = 0; i <= 20; ++i) {
         std::lock_guard<std::mutex> lock(outputMutex);
-        std::cout << "Counting Up: " << i << std::endl;
+        std::cout << "Counting Up: " << i << '\n';
     }
 }
 
 void countDown() {
     for (int i = 20; i >= 0; --i) {
         std::lock_guard<std::mutex> lock(outputMutex);
-        std::cout << "Counting Down: " << i << std::endl;
+        std::cout << "Counting Down: " << i << '\n';
     }
 }
 
 int main() {
-    std::cout << "Starting Concurrency Example..." << std::endl;
+    std::cout << "Starting Concurrency Example...\n";
 
-    std::thread thread1(countUp);
-    thread1.join();  // Wait for countUp to complete
+    std::thread upThread(countUp);
+    std::thread downThread(countDown);
 
-    std::thread thread2(countDown);
-    thread2.join();  // Wait for countDown to complete
+    upThread.join();
+    downThread.join();
 
-    std::cout << "Both threads have finished." << std::endl;
+    std::cout << "Both threads have finished.\n";
+
     return 0;
 }
-// main.cpp 
