@@ -1,34 +1,41 @@
 # Concurrency Concepts
 
-This project demonstrates fundamental concurrency concepts using both **C++** and **Java**. The programs create and manage multiple threads that count upward and downward while coordinating execution using thread synchronization techniques such as `join()`. The project highlights how concurrency is implemented differently in each language while achieving the same behavior.
+This project was developed to strengthen my understanding of threads and concurrency APIs in Java and C++. Both programs create separate threads that count upward and downward, then use `join()` to wait for each thread to finish.
+
+The implementations demonstrate how Java and C++ manage thread creation and coordination using different language-specific APIs while producing the same behavior.
 
 ## Features
 
-- Multithreading examples in both Java and C++
-- Demonstrates thread creation and execution
-- Sequential thread coordination using `join()`
-- Console-based output for easy visualization
+- Implements threading examples in Java and C++
+- Creates separate counting-up and counting-down threads
+- Counts upward from 0 to 20
+- Counts downward from 20 to 0
+- Coordinates thread completion using `join()`
+- Uses `std::mutex` and `std::lock_guard` in C++
+- Displays thread activity in the terminal
 - Includes pseudocode for both implementations
-- Shows safe thread synchronization behavior
 
 ## Concepts Demonstrated
 
-- Concurrency
-- Parallel execution
+- Thread creation
 - Thread lifecycle
-- Thread synchronization
+- Thread execution
 - Thread coordination
-- Sequential execution using `join()`
-- Mutex usage in C++
-- JVM thread handling in Java
+- Waiting for threads with `join()`
+- Lambda expressions in Java
+- Mutexes in C++
+- Resource Acquisition Is Initialization (RAII) with `std::lock_guard`
+- Java Virtual Machine (JVM) thread management
+- C++ Standard Library thread management
+- Interrupted thread handling in Java
 
----
-
-## Technologies used
+## Technologies Used
 
 - Java
 - C++
-- VS Code
+- Java Development Kit (JDK)
+- C++ Standard Library
+- Visual Studio Code
 - Git
 - GitHub
 - Terminal / Command Line
@@ -46,95 +53,152 @@ ConcurrencyConcepts/
 └── .gitignore
 ```
 
+- `ConcurrencyDemo.java` – Java thread implementation
+- `main.cpp` – C++ thread and mutex implementation
+- `PseudocodeJava.txt` – Pseudocode for the Java program
+- `PseudocodeC++.txt` – Pseudocode for the C++ program
+- `Screenshots/` – Program output, pseudocode, and repository screenshots
+- `.gitignore` – Excludes generated files and editor settings
+
+## How to Run
+
 ### Prerequisites
 
-- Java JDK installed
-- javac and java configured in terminal
-- C++
+- Java Development Kit (JDK 11 or later)
+- A C++ compiler with C++11 support, such as `g++`
+- Git
+
+Verify that the required tools are installed:
+
+```bash
+java -version
+javac -version
+g++ --version
+git --version
+```
 
 ### Steps
 
-## How to Run Java App
+1. Clone the repository:
 
-1. Clone the Repository
-   
-``` git clone https://github.com/aliramirez08/ConcurrencyConcepts.git
+```bash
+git clone https://github.com/aliramirez08/ConcurrencyConcepts.git
+```
+
+2. Navigate to the project directory:
+
+```bash
 cd ConcurrencyConcepts
 ```
 
-2. Compile
+### Run the Java Program
 
-```
+1. Compile the Java source file:
+
+```bash
 javac ConcurrencyDemo.java
 ```
 
-3. Run
+2. Run the compiled program:
 
-```
+```bash
 java ConcurrencyDemo
 ```
 
-## How to Run C+++ App
+### Run the C++ Program
 
-1. Compile
+1. Compile the C++ source file:
 
-```
+```bash
 g++ -std=c++11 -pthread main.cpp -o cpp_runner
 ```
 
-2. Run
+2. Run the compiled program:
 
-```
+```bash
 ./cpp_runner
 ```
 
----
+## Code Examples
 
-## Example Output
+### Java Thread Creation
 
-# Java Thread Example
-
-```
+```java
 Thread upThread = new Thread(() -> {
     for (int i = 0; i <= 20; i++) {
         System.out.println("Counting Up: " + i);
     }
 });
+
+upThread.start();
+upThread.join();
 ```
 
-# C+++ Thread Example
-```
-thread thread1(countUp);
+The lambda expression defines the work performed by the thread. The `start()` method begins its execution, and `join()` makes the main thread wait for it to finish.
+
+### C++ Thread Creation
+
+```cpp
+std::thread thread1(countUp);
 thread1.join();
 ```
 
+Creating the `std::thread` starts the `countUp()` function on a new thread. Calling `join()` makes the main thread wait for it to complete.
+
+### C++ Mutex Protection
+
+```cpp
+std::lock_guard<std::mutex> lock(outputMutex);
+std::cout << "Counting Up: " << i << std::endl;
+```
+
+The lock guard acquires the mutex before writing to the console and automatically releases it when the current scope ends.
+
+## Example Output
+
+```text
+Starting Concurrency Example...
+Counting Up: 0
+Counting Up: 1
+...
+Counting Up: 20
+Counting Down: 20
+Counting Down: 19
+...
+Counting Down: 0
+Both threads have finished.
+```
+
+Because each thread is joined before the next thread starts, the upward count finishes before the downward count begins.
+
 ## What I Learned
-- How threads operate in both Java and C++
-- The importance of synchronization in concurrent programs
-- How join() controls execution order
-- The differences between Java’s managed concurrency model and C++’s lower-level thread management
-- How mutexes help prevent unsafe shared access in C++
-- How concurrency concepts apply across multiple programming languages
+
+This project strengthened my understanding of how threads are created, started, and joined in Java and C++. I learned that both languages support the same fundamental threading concepts but provide different APIs for implementing them.
+
+I also learned how `join()` affects execution order, how Java handles interrupted threads with `InterruptedException`, and how C++ uses mutexes and RAII-based lock guards to protect shared resources.
 
 ## Future Improvements
 
-- Add parallel thread execution examples
-- Demonstrate race conditions and deadlocks
-- Add semaphore and condition variable examples
-- Include performance benchmarking
-- Build a GUI visualization of thread execution
-- Add unit tests
-- Expand into producer-consumer examples
+- Start both threads before joining them to demonstrate concurrent execution
+- Update the Java version to handle concurrent console output
+- Compare sequential and concurrent execution
+- Demonstrate race conditions and their solutions
+- Add deadlock examples and prevention techniques
+- Implement semaphores and condition variables
+- Add a producer-consumer example
+- Include performance benchmarks
+- Add automated tests
+- Build a graphical visualization of thread execution
 
 ## Screenshots
 
 ### Java Program Output
 
-![Java Output](Screenshots/JavaOutput.png)
+![Java Program Output](Screenshots/JavaOutput.png)
 
 ### C++ Program Output
 
-![C++ Output](Screenshots/C++Output.png)
+![C++ Program Output](Screenshots/C++Output.png)
 
 ### Java Pseudocode
 
